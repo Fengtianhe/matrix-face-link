@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix Face Link</title>
+    
+    <!-- 1. 引入 Tailwind CSS (CDN 方式，快速启动) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <!-- 3. 引入 MediaPipe Scripts (保持原样，因为 MatrixFace.tsx 依赖 window 全局对象) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        font-family: 'Share Tech Mono', monospace;
+        background-color: #050505;
+        color: #00ff00;
+        overflow: hidden;
+      }
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 4. 指向 Vite 的入口文件 -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
