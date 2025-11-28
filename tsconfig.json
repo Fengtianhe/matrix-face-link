@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                // 适配现代浏览器
+    "module": "ESNext",                // 兼容 Vite 的 ES 模块
+    "moduleResolution": "Bundler",     // 适配 Vite 打包（替代 NodeNext）
+    "strict": true,                    // 开启严格类型检查（可选，推荐）
+    "jsx": "preserve",                 // 保留 JSX（交给 Vite 处理）
+    "sourceMap": true,                 // 生成 sourcemap
+    "resolveJsonModule": true,         // 支持导入 JSON 文件
+    "esModuleInterop": true,           // 兼容 CommonJS/ES 模块
+    "skipLibCheck": true,              // 跳过第三方类型库检查（加速）
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,                    // 核心！仅做类型检查，不输出 JS 文件（Vite 会编译 TS）
+    "baseUrl": ".",                    // 基础路径
+    "paths": {                         // 路径别名（和 Vite 配置对齐）
+      "@/*": ["src/*"]
+    },
+    "lib": ["ES2020", "DOM", "DOM.Iterable"] // 引入浏览器环境类型
+  },
+  "include": [                         // 指定需要检查的文件（必配！否则 tsc 无目标）
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "exclude": [                         // 排除无需检查的文件
+    "node_modules",
+    "dist",
+    "**/*.spec.ts"
+  ]
+}

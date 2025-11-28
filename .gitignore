@@ -1,2 +1,5 @@
 .joycode
 node_modules
+.vercel
+.env*.local
+package-lock.json
