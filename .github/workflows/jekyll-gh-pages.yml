@@ -1,0 +1,36 @@
+name: Deploy dist to GitHub Pages
+
+# 监听main分支的push事件，触发部署
+on:
+  push:
+    branches: [main] # 若你的主分支是master，改成master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # 基于Ubuntu系统运行
+    steps:
+      # 1. 拉取仓库代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. 配置Node环境（版本和本地一致，比如18/20）
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm' # 缓存依赖，加快构建速度
+
+      # 3. 安装依赖
+      - name: Install dependencies
+        run: npm install
+
+      # 4. 打包生成dist目录
+      - name: Build project
+        run: npm run build # 替换成你的打包命令（如react-scripts build）
+
+      # 5. 部署dist到gh-pages分支
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub自动生成，无需手动配置
+          publish_dir: ./dist # 要部署的目录（即dist）
