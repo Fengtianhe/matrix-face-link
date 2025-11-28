@@ -174,6 +174,7 @@ const MatrixFace: React.FC<MatrixFaceProps> = ({ onLog, isAnalyzing, setAnalysis
     // --- AUDIO PROCESSING ---
     let audioLevel = 0;
     if (analyserRef.current && audioDataRef.current) {
+        // @ts-ignore
         analyserRef.current.getByteFrequencyData(audioDataRef.current);
         // Calculate average volume
         let sum = 0;
